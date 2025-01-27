@@ -25,7 +25,6 @@ class PixelScalingCalc(bpy.types.Panel):
     def draw(self, context):
         layout = self.layout
         scene = bpy.context.scene
-        
         ### liste aller 3druler längen
         seitenlaengen = list((s.points[0].co - s.points[-1].co).length for s in bpy.data.grease_pencils["Annotations"].layers["RulerData3D"].frames[0].strokes)
 
@@ -38,13 +37,17 @@ class PixelScalingCalc(bpy.types.Panel):
                         break
         
         ### einfach seitenlänge vom 3druler durch die grid size für seitenlänge in pixeln
-        calc_pixel_scaling = round(seitenlaengen[-1] // grid_scaling_var)
+        if len(seitenlaengen) != 0:
+            calc_pixel_scaling = round(seitenlaengen[-1] // grid_scaling_var)
+        else:
+            calc_pixel_scaling = 0
         box = layout.box()
         ### text set
         box.label(text="Measured length in px: "+str(calc_pixel_scaling))
         
         ### berechneten scaling wert zu clipboard automatisch kopieren
         auto_copy(calc_pixel_scaling)
+        scene = bpy.context.scene
  
 
 
