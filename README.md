@@ -4,3 +4,4 @@
 ## Addons, Shader & Geometry-Nodes
  - Addons liegen hier vor als .py Dateien in /addon_code
  - Shader&Geometry-Nodes als Screenshots der sog. "Nodetrees" in /nodetrees
+ - Screenshots der Szenen-Geometry & Animationsvorgänge in /screenshots
